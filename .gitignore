@@ -1,0 +1,7 @@
+.idea
+
+/config.php
+/vendor/
+composer.phar
+
+/tmp/

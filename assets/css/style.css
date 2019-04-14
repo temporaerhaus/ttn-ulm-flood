@@ -1,0 +1,113 @@
+body {
+  font-family: 'Roboto', sans-serif; }
+
+body, select, input, textarea {
+  color: #333;
+  background-color: #01a7ff; }
+
+a {
+  color: #03f; }
+
+a:hover {
+  color: #69f; }
+
+::-moz-selection {
+  background: #ffffff;
+  color: #333333;
+  text-shadow: none; }
+
+::selection {
+  background: #ffffff;
+  color: #333333;
+  text-shadow: none; }
+
+a:link {
+  -webkit-tap-highlight-color: #fcd700; }
+
+ins {
+  background-color: #fcd700;
+  color: #000;
+  text-decoration: none; }
+
+mark {
+  background-color: #fcd700;
+  color: #000;
+  font-style: italic;
+  font-weight: bold; }
+
+/* Mozilla dosen't style placeholders by default */
+input:-moz-placeholder {
+  color: #a9a9a9; }
+
+textarea:-moz-placeholder {
+  color: #a9a9a9; }
+
+blockquote {
+  padding: 16px;
+  background: #eee; }
+
+/* Default
+-------------------------------------------------------------------------------*/
+h1 {
+  font-weight: 700;
+  font-size: 3rem;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  text-align: center; }
+
+h2 {
+  font-weight: 400;
+  font-size: 2rem;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  text-align: center; }
+
+h3 {
+  font-weight: 400;
+  font-size: 1.25rem;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  text-align: center; }
+
+.main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; }
+  .main .headline {
+    margin: 1rem; }
+  .main .content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 3rem; }
+    .main .content .item {
+      padding: 2rem;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      transition: 0.3s;
+      border-radius: 5px; }
+      .main .content .item:hover {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); }
+      .main .content .item.ok {
+        background-color: mediumseagreen; }
+      .main .content .item.alert {
+        background-color: lightcoral; }
+      .main .content .item .status {
+        margin-top: 1.25rem;
+        text-align: center;
+        font-weight: 700;
+        font-size: 2rem;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        color: #fff; }
+      .main .content .item .text {
+        margin-top: 1.25rem;
+        color: #fff;
+        font-size: 0.85rem; }
+
+/* Media queries
+-------------------------------------------------------------------------------*/
+/* Print styles
+-------------------------------------------------------------------------------*/
+
+/*# sourceMappingURL=style.css.map */
