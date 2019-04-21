@@ -18,6 +18,8 @@
 	<link rel="stylesheet" href="assets/css/style.css" />
 
     <script src="assets/js/main.js"></script>
+
+    <title>Hochwasser Ulm</title>
 </head>
 <body>
 
@@ -44,7 +46,7 @@
 
             <div class="text">
                 <p>
-                    {{ diff }} cm Unterschied in den letzten 2 Stunden.
+                    {{ diff|round(1,'floor') }} cm Unterschied in den letzten 2 Stunden.
                 </p>
             </div>
         </div>

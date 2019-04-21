@@ -45,7 +45,7 @@ class DB {
         $db = $this->client->selectDB('telegraf');
 
         $result = $db->query(
-            "SELECT median(payload_fields_distance) 
+            "SELECT mean(payload_fields_distance) 
                    FROM telegraf.autogen.mqtt_consumer 
                    WHERE ".$intervalStr."
                    AND topic='ttn_ulm-radweghochwasser/devices/ultrasonic1/up'"
