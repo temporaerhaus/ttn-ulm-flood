@@ -21,7 +21,7 @@ class Flood {
         // debugging
         //$lastTwoHours += 10;
 
-        if (($diff = abs($twoHoursBeforeLastTwoHours - $lastTwoHours)) > 1.0) { // larger than 1.0cm
+        if (($diff = abs($twoHoursBeforeLastTwoHours - $lastTwoHours)) > 10.0) { // larger than 10mm
             return [true, $diff];
         } else {
             return [false, $diff];

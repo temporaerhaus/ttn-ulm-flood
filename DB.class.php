@@ -48,7 +48,8 @@ class DB {
             "SELECT mean(payload_fields_distance) 
                    FROM telegraf.autogen.mqtt_consumer 
                    WHERE ".$intervalStr."
-                   AND topic='ttn_ulm-radweghochwasser/devices/ultrasonic1/up'"
+                   AND topic='ttn_ulm-radweghochwasser/devices/ultrasonic1/up'
+                   AND payload_fields_distance < 9999.0"
         );
 
         return $result->getPoints();

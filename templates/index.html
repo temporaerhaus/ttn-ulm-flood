@@ -46,7 +46,7 @@
 
             <div class="text">
                 <p>
-                    {{ diff|round(1,'floor') }} cm Unterschied in den letzten 2 Stunden.
+                    {{ (diff/10)|round(1,'floor') }} cm Unterschied in den letzten 2 Stunden.
                 </p>
             </div>
         </div>
