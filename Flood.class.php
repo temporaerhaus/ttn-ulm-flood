@@ -15,13 +15,13 @@ class Flood {
     }
 
     public function isFlood() {
-        $lastTwoHours = DB::create()->getMeanForLastInterval()[0]['mean'];
-        $twoHoursBeforeLastTwoHours = DB::create()->getMeanForSecondLastInterval()[0]['mean'];
+        $lastTwoHours = DB::create()->getMeanForLastInterval()[0]['median'];
+        $twoHoursBeforeLastTwoHours = DB::create()->getMeanForSecondLastInterval()[0]['median'];
 
         // debugging
         //$lastTwoHours += 10;
 
-        if (($diff = abs($twoHoursBeforeLastTwoHours - $lastTwoHours)) > 10.0) { // larger than 10mm
+        if (($diff = abs($twoHoursBeforeLastTwoHours - $lastTwoHours)) > 10.0) { // larger than 10mm / 1cm
             return [true, $diff];
         } else {
             return [false, $diff];

@@ -20,6 +20,13 @@ class DB {
         );
     }
 
+    /**
+     * Currently unused.
+     *
+     * @param string $duration
+     * @return array
+     * @throws Exception
+     */
     public function getLatestDistanceMeasurements($duration = '2h') {
         $db = $this->client->selectDB('telegraf');
 
@@ -41,17 +48,26 @@ class DB {
         return $this->getMeanForInterval('time > (now() - 4h) AND time < now() - 2h');
     }
 
+    /**
+     *
+     * All values larger than 4 meters (4000.0 mm) are excluded, because the normal dry value is around 3.2 meter and
+     * can only get smaller with more water.
+     *
+     * @param $intervalStr
+     * @return array
+     * @throws Exception
+     */
     private function getMeanForInterval($intervalStr) {
         $db = $this->client->selectDB('telegraf');
 
         $result = $db->query(
-            "SELECT mean(payload_fields_distance) 
+            "SELECT median(payload_fields_distance) 
                    FROM telegraf.autogen.mqtt_consumer 
                    WHERE ".$intervalStr."
                    AND topic='ttn_ulm-radweghochwasser/devices/ultrasonic1/up'
-                   AND payload_fields_distance < 9999.0"
+                   AND payload_fields_distance < 4000.0"
         );
-
+        //print_r($result->getPoints());
         return $result->getPoints();
     }
 }
