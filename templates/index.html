@@ -7,11 +7,12 @@
 <!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#01a7ff">
+    <meta name="author" content="Matthias Schneider">
+    <meta name="description" content="Hochwasser Herdbrücke in Ulm, Donau.">
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/reset.css" />
@@ -20,6 +21,10 @@
     <script src="assets/js/main.js"></script>
 
     <title>Hochwasser Ulm</title>
+    <!--
+    Developed by Matthias Schneider of TTN Ulm / flurp.de / Cortex Media GmbH.
+    https://lora.ulm-digital.com  / https://flurp.de / https://cortex-media.de
+    -->
 </head>
 <body>
 
@@ -45,9 +50,9 @@
             </div>
 
             <div class="text">
-                <p>
-                    {{ (diff/10)|round(1,'floor') }} cm Unterschied in den letzten 2 Stunden.
-                </p>
+                <p>{{ (diff)|round(1,'floor') }} cm Unterschied in den letzten 2 Stunden.</p>
+                <br>
+                <p>Schwankungen von +- 0.5cm bei Trockenheit<br>sind vermutlich brückentechnisch bedingt<br>(Vibration, Ausdehnung, ...).</p>
             </div>
         </div>
 
