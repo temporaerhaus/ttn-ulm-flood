@@ -1,5 +1,10 @@
 .idea
 
+.sass-cache
+
+assets/css/*.css
+assets/css/*.css.map
+
 /config.php
 /vendor/
 composer.phar
