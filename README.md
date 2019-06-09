@@ -10,19 +10,19 @@ wenig Wasser, viel Wasser) schnell zu erkennen ist.
 
 ## hochwasser.ttnulm.de
 
--> Direkt zur Webseite: [https://hochwasser.ttnulm.de]()
+-> Direkt zur Webseite: [https://hochwasser.ttnulm.de](https://hochwasser.ttnulm.de)
 
 ## Das Projekt
 
 Die TTN Ulm Community Gruppe hat dieses Projekt zusammen mit der Digitalen Agenda 
 der Stadt Ulm zusammen entwickelt. Durch das schon bestehende, flächendeckende
 LoRaWAN Netz in Ulm ([https://lora.ulm-digital.com](https://lora.ulm-digital.com)) 
-und einem geeigneten Ultraschallsensor ([https://www.decentlab.com/products/ultrasonic-distance-/-level-sensor-for-lorawan]())
+und einem geeigneten Ultraschallsensor ([https://www.decentlab.com/products/ultrasonic-distance-/-level-sensor-for-lorawan](https://www.decentlab.com/products/ultrasonic-distance-/-level-sensor-for-lorawan))
 liefert der erste Sensor seit Anfang Juni 2019 an der Herdbrücke die ersten 
 Abstandsdaten. Weitere Sensoren an der Blau sind geplant.
 
 ## Daten
-Die Daten werden in der community-verwalteten TICK / Grafana Instanz unter [https://ttndata.cortex-media.de]()
+Die Daten werden in der community-verwalteten TICK / Grafana Instanz unter [https://ttndata.cortex-media.de](https://ttndata.cortex-media.de)
 gespeichert. Von dort werden die Daten bezogen, verarbeitet und, je nach dann vorliegendem Fall,
 die entsprechende Visualisierung generiert.
 
