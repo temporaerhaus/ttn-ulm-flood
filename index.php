@@ -1,4 +1,6 @@
 <?php
+use TTNUlm\Flood;
+
 require 'vendor/autoload.php';
 
 $loader = new \Twig\Loader\FilesystemLoader('templates');
@@ -7,7 +9,6 @@ $twig = new \Twig\Environment($loader, [
     'auto_reload' => true,
 ]);
 
-require __DIR__ . '/Flood.class.php';
 $res = Flood::create()->isFlood();
 
 echo $twig->render('index.html', [

@@ -1,4 +1,5 @@
 <?php
+namespace TTNUlm;
 
 class DB {
     public static $instance;
@@ -12,7 +13,7 @@ class DB {
     public function __construct() {
         require('config.php');
 
-        $this->client = new InfluxDB\Client(
+        $this->client = new \InfluxDB\Client(
             $config['influx_host'],
             $config['influx_port'],
             $config['influx_username'],
@@ -112,5 +113,19 @@ class DB {
             $median = ($median + $values[$middleIndex - 1]) / 2;
         }
         return $median;
+    }
+
+    public function getFromTo($from, $to) {
+        $db = $this->client->selectDB('telegraf');
+
+        $intervalStr = " time >= '" . $from . "' AND time <= '" .$to . "' ";
+
+        $query = "SELECT payload_fields_distance                    
+                   FROM telegraf.autogen.mqtt_consumer 
+                   WHERE ".$intervalStr."
+                   AND topic='ttn_ulm-radweghochwasser/devices/ultrasonic1/up'";
+
+        $result = $db->query($query);
+        return $result->getPoints();
     }
 }

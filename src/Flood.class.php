@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/DB.class.php';
+namespace TTNUlm;
 
 class Flood {
     public static $instance;
