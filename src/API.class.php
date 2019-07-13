@@ -16,20 +16,24 @@ class API {
         $clean = array_map(function($a){
 
             //Example: 2019-06-19T22:04:57.579645412Z
-            $date = DateTime::createFromFormat('Y-m-d\TH:i:s+', $a['time']);
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:s+', $a['time']);
             return [
                 'time' => $date->format('Y-m-d H:i:s'),
                 'distance' => $a['payload_fields_distance']
             ];
         }, $data);
-
-        print_r($clean);
-        //echo json_encode($data);
-        exit();
-
+        echo json_encode($clean);
     }
 
-    public function state() {
-
+    public function returnState() {
+        $res = Flood::create()->isFlood();
+        if ($res) {
+            echo json_encode([
+                'flood' => $res[0],
+                'diff' => $res[1]
+            ]);
+        } else {
+            echo 'fail';
+        }
     }
 }

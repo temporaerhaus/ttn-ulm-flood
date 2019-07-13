@@ -1,0 +1,64 @@
+{{ include('header.html') }}
+
+<div class="headline">
+    <h1>API Dokumentation</h1>
+</div>
+
+<div class="content-docs">
+    <p>
+        Die Daten der Hochwassersensoren lassen sich über eine einfache API via HTTP GET Requests abfragen.
+    </p>
+
+    <h2>Status</h2>
+    <p>Ruft den aktuellen Hochwasserstand ab, mit Angabe der aktuellen Höhe des Wassers in mm auf dem Strassenbelag.</p>
+    <h3>Request</h3>
+    <pre>
+        https://api.hochwasser.ttnulm.de/state
+    </pre>
+    <h3>Response</h3>
+    <pre>
+        {
+        "diff": 0,
+        "flood": false
+        }
+    </pre>
+
+
+    <h2>Abstände</h2>
+    <p>
+        Ruft die Abstandswerte in Millimeter im genannten Interval ab.
+        <br>
+        Datumsformat: YYYY-MM-DD hh:mm:ss, die Zeit kann weggelassen werden.
+        <br>
+        Auf korrektes URL-Encoding achten.
+    </p>
+    <h3>Request</h3>
+    <pre>
+        https://api.hochwasser.ttnulm.de/distance?from=2019-07-01&to=2019-07-04
+    </pre>
+    <h3>Response</h3>
+    <pre>
+    <code>
+[
+    {
+        "distance": 3264,
+        "time": "2019-07-03 23:24:41"
+    },
+    {
+        "distance": 3266,
+        "time": "2019-07-03 23:34:40"
+    },
+    {
+        "distance": 3264,
+        "time": "2019-07-03 23:44:38"
+    },
+    {
+        "distance": 3264,
+        "time": "2019-07-03 23:54:38"
+    }
+]
+    </code>
+    </pre>
+</div>
+
+{{ include('footer.html') }}
