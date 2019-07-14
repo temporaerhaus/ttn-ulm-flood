@@ -14,10 +14,10 @@ class Flood {
 
     }
 
-    public function isFlood() {
+    public function isFlood($id) {
         // returned values are in cm, rounded to .5
-        $lastTwoHours = DB::create()->getMeanForLastInterval();
-        $twoHoursBeforeLastTwoHours = DB::create()->getMeanForSecondLastInterval();
+        $lastTwoHours = DB::create()->getMeanForLastInterval($id);
+        $twoHoursBeforeLastTwoHours = DB::create()->getMeanForSecondLastInterval($id);
 
         // debugging
         //$lastTwoHours += 10;

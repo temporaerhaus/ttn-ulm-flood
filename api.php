@@ -10,18 +10,37 @@ $router->map('GET', '/', function() use ($api) {
     echo 'root';
 });
 
-$router->map('GET', '/distance', function() use ($api) {
+//**********
+// Distance
+//**********
+$router->map('GET', '/distance/[i:id]/?', function($id) use ($api) {
     $from = $_GET['from'];
     $to = $_GET['to'];
-    $api->returnDistance($from, $to);
+    $api->returnDistance($id, $from, $to);
 });
-$router->map('GET', '/state', function() use ($api) {
-    $api->returnState();
+
+//**********
+// State
+//**********
+$router->map('GET', '/state/[i:id]/?', function($id) use ($api) {
+    $api->returnState($id);
+});
+
+//**********
+// Sensors
+//**********
+$router->map('GET', '/sensors/?', function() use ($api) {
+    $api->returnSensors();
 });
 
 
+// get matches
 $match = $router->match();
-if ($match) {
-    $match['target']();
-}
 
+// call closure or throw 404 status
+if( is_array($match) && is_callable( $match['target'] ) ) {
+    call_user_func_array( $match['target'], $match['params'] );
+} else {
+	// no route was matched
+	header( $_SERVER["SERVER_PROTOCOL"] . ' 404 Not Found');
+}

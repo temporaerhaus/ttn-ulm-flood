@@ -4,6 +4,7 @@ namespace TTNUlm;
 class DB {
     public static $instance;
     public $client;
+    private $sensors;
 
     public static function create() {
         self::$instance = new self();
@@ -19,23 +20,27 @@ class DB {
             $config['influx_username'],
             $config['influx_password']
         );
+
+        $this->sensors = $cfg_sensors;
     }
 
     /**
      * Currently unused.
      *
+     * @param $id
      * @param string $duration
      * @return array
-     * @throws Exception
+     * @throws \Exception
      */
-    public function getLatestDistanceMeasurements($duration = '2h') {
+    public function getLatestDistanceMeasurements($id, $duration = '2h') {
         $db = $this->client->selectDB('telegraf');
+        $sensorName = $this->sensors[$id];
 
         $result = $db->query(
             "SELECT payload_fields_distance 
                    FROM telegraf.autogen.mqtt_consumer 
                    WHERE time > (now() - ".$duration.")
-                   AND topic='ttn_ulm-radweghochwasser/devices/ultrasonic1/up'"
+                   AND topic='ttn_ulm-radweghochwasser/devices/".$sensorName."/up'"
         );
 
         return $result->getPoints();
@@ -44,21 +49,23 @@ class DB {
     /**
      * Return the median of the last two hours.
      *
+     * @param $id
      * @return array
-     * @throws Exception
+     * @throws \Exception
      */
-    public function getMeanForLastInterval() {
-        return $this->getMedianForInterval('time > (now() - 2h) AND time < now()');
+    public function getMeanForLastInterval($id) {
+        return $this->getMedianForInterval($id, 'time > (now() - 2h) AND time < now()');
     }
 
     /**
      * Return the median of the second last two hours
      *
+     * @param $id
      * @return array
-     * @throws Exception
+     * @throws \Exception
      */
-    public function getMeanForSecondLastInterval() {
-        return $this->getMedianForInterval('time > (now() - 4h) AND time < now() - 2h');
+    public function getMeanForSecondLastInterval($id) {
+        return $this->getMedianForInterval($id, 'time > (now() - 4h) AND time < now() - 2h');
     }
 
     /**
@@ -71,18 +78,20 @@ class DB {
      * All values larger than 4 meters (4000.0 mm) are excluded, because the normal dry value is around 3.2 meter  at
      * the Herdbrücke and can only get smaller with more water.
      *
+     * @param $id
      * @param $intervalStr
      * @return array
-     * @throws Exception
+     * @throws \Exception
      */
-    private function getMedianForInterval($intervalStr) {
+    private function getMedianForInterval($id, $intervalStr) {
         $db = $this->client->selectDB('telegraf');
+        $sensorName = $this->sensors[$id];
 
         $result = $db->query(
             "SELECT round((payload_fields_distance/10)*2) / 2 AS distance                   
                    FROM telegraf.autogen.mqtt_consumer 
                    WHERE ".$intervalStr."
-                   AND topic='ttn_ulm-radweghochwasser/devices/ultrasonic1/up'
+                   AND topic='ttn_ulm-radweghochwasser/devices/".$sensorName."/up'
                    AND payload_fields_distance < 4000.0"
         );
 
@@ -115,17 +124,24 @@ class DB {
         return $median;
     }
 
-    public function getFromTo($from, $to) {
+    public function getFromTo($id, $from, $to) {
         $db = $this->client->selectDB('telegraf');
+        $sensorName = $this->sensors[$id];
 
         $intervalStr = " time >= '" . $from . "' AND time <= '" .$to . "' ";
 
         $query = "SELECT payload_fields_distance                    
                    FROM telegraf.autogen.mqtt_consumer 
                    WHERE ".$intervalStr."
-                   AND topic='ttn_ulm-radweghochwasser/devices/ultrasonic1/up'";
+                   AND topic='ttn_ulm-radweghochwasser/devices/".$sensorName."/up'";
 
         $result = $db->query($query);
         return $result->getPoints();
+    }
+
+
+    // TODO
+    public function getSensors() {
+        return [];
     }
 }

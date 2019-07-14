@@ -6,12 +6,13 @@ class API {
     /**
      * Returns the distance from $from to $to.
      *
+     * @param $id
      * @param int $from
      * @param int $to
      */
-    public function returnDistance($from, $to) {
+    public function returnDistance($id, $from, $to) {
 
-        $data = DB::create()->getFromTo($from, $to);
+        $data = DB::create()->getFromTo($id, $from, $to);
 
         $clean = array_map(function($a){
 
@@ -25,8 +26,8 @@ class API {
         echo json_encode($clean);
     }
 
-    public function returnState() {
-        $res = Flood::create()->isFlood();
+    public function returnState($id) {
+        $res = Flood::create()->isFlood($id);
         if ($res) {
             echo json_encode([
                 'flood' => $res[0],
@@ -35,5 +36,9 @@ class API {
         } else {
             echo 'fail';
         }
+    }
+
+    public function returnSensors() {
+        $res = DB::create()->getSensors();
     }
 }
