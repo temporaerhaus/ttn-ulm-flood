@@ -9,11 +9,21 @@
         Die Daten der Hochwassersensoren lassen sich über eine einfache API via HTTP GET Requests abfragen.
     </p>
 
+    <h2>Sensorliste</h2>
+    <p>
+        Jeder Sensor hat eine eindeutige, immer gleich bleibende Nummerierung. Diese Nummer wird nachfolgend
+        als Parameter in den Anfragen verwendet.
+    </p>
+    <pre>
+        1: Sensor Herdbrücke (48.396026, 9.995994)
+        2: Sensor Eisenbahnbrücke Blau (48.403812, 9.949625)
+    </pre>
+
     <h2>Status</h2>
     <p>Ruft den aktuellen Hochwasserstand ab, mit Angabe der aktuellen Höhe des Wassers in mm auf dem Strassenbelag.</p>
     <h3>Request</h3>
     <pre>
-        https://api.hochwasser.ttnulm.de/state
+        https://api.hochwasser.ttnulm.de/state/[id]
     </pre>
     <h3>Response</h3>
     <pre>
@@ -34,7 +44,7 @@
     </p>
     <h3>Request</h3>
     <pre>
-        https://api.hochwasser.ttnulm.de/distance?from=2019-07-01&to=2019-07-04
+        https://api.hochwasser.ttnulm.de/distance/[id]?from=2019-07-01&to=2019-07-04
     </pre>
     <h3>Response</h3>
     <pre>
