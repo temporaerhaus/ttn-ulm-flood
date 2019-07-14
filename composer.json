@@ -2,7 +2,8 @@
     "require": {
         "influxdb/influxdb-php": "^1.14",
         "altorouter/altorouter": "^1.2",
-        "twig/twig": "^2.0"
+        "twig/twig": "^2.0",
+        "ext-json": "*"
     },
     "autoload": {
         "psr-4": {
