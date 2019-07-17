@@ -43,6 +43,7 @@ sobald mehr Erfahrungswerte vorliegen, anpassen.
 ## Technisches
 
 * Einfache PHP Anwendung (kein Framework, wenig Dependencies)
+* Damit fällt der Einstieg leicht und es ist keine lange Einarbeitung nötig. Der Code könnte natürlich deutlich mehr overengineered sein, hindert hier aber nur.
 * InfluxDB als Datenbank
 * Dependency Management via Composer   
 
