@@ -13,7 +13,7 @@ $router = new AltoRouter();
 // Frontpage
 //**************
 $router->map('GET', '/', function() use ($twig) {
-    $res = Flood::create()->isFlood();
+    $res = Flood::create()->isFlood(1);
     echo $twig->render('index.html', [
         'highwater' => $res[0],
         'diff' => $res[1]
