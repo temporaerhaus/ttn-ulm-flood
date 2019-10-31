@@ -13,10 +13,13 @@ $router = new AltoRouter();
 // Frontpage
 //**************
 $router->map('GET', '/', function() use ($twig) {
-    $res = Flood::create()->isFlood(1);
+    $herdbruecke = Flood::create()->isFlood(1);
+    $eisenbahnbruecke = Flood::create()->isFlood(2);
     echo $twig->render('index.html', [
-        'highwater' => $res[0],
-        'diff' => $res[1]
+        'highwater1' => $herdbruecke[0],
+        'diff1' => $herdbruecke[1],
+        'highwater2' => $eisenbahnbruecke[0],
+        'diff2' => $eisenbahnbruecke[1]
     ]);
 });
 

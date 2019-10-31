@@ -92,7 +92,8 @@ pre {
 
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
+    flex-direction: column;
 
     margin-top: 3rem;
 
@@ -101,6 +102,7 @@ pre {
       box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
       transition: 0.3s;
       border-radius: 5px;
+      margin-bottom: 2rem;
 
       &:hover {
         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
@@ -160,10 +162,9 @@ pre {
   }
 
   .note {
-    margin-top: 3rem;
     color: #dbdbdb;
     font-size: 0.9rem;
-    margin-bottom: 3rem;
+    margin: 2rem 0;
   }
 
 }
