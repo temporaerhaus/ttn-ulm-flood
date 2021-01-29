@@ -8,7 +8,7 @@
 
 <div class="content">
 
-    <div class="item {% if highwater1 %}alert{% else %}ok{% endif %}">
+    <div class="item {% if highwater1 %} alert{% else %} ok{% endif %}">
         <h2>Herdbrücke</h2>
         
         <div class="status">
@@ -20,11 +20,12 @@
         </div>
 
         <div class="text">
+            <p>{{ (abs1)|round(1, 'floor') }} cm Hochwasser</p>
             <p>{{ (diff1)|round(1,'floor') }} cm Unterschied in den letzten 2 Stunden.</p>
         </div>
     </div>
 
-    <div class="item {% if highwater2 %}alert{% else %}ok{% endif %}">
+    <div class="item {% if highwater2 %} alert{% else %} ok{% endif %}">
         <h2>Eisenbahnbrücke Blau</h2>
 
         <div class="status">
@@ -36,6 +37,7 @@
         </div>
 
         <div class="text">
+            <p>{{ (abs2)|round(1, 'floor') }} cm Hochwasser</p>
             <p>{{ (diff2)|round(1,'floor') }} cm Unterschied in den letzten 2 Stunden.</p>
         </div>
     </div>

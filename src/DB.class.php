@@ -141,7 +141,25 @@ class DB {
 
 
     // TODO
-    public function getSensors() {
+    public function getSensors(): array {
         return [];
+    }
+
+    public function getCurrentValue($id): ?array {
+        $db = $this->client->selectDB('telegraf');
+        $sensorName = $this->sensors[$id];
+
+        $result = $db->query(
+            "SELECT payload_fields_distance 
+                   FROM telegraf.autogen.mqtt_consumer 
+                   WHERE topic='ttn_ulm-radweghochwasser/devices/".$sensorName."/up' 
+                   ORDER BY time DESC LIMIT 1"
+        );
+
+        $points = $result->getPoints();
+        if (!empty($points)) {
+            return $points[0];
+        }
+        return null;
     }
 }

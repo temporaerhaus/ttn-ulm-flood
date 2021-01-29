@@ -18,8 +18,10 @@ $router->map('GET', '/', function() use ($twig) {
     echo $twig->render('index.html', [
         'highwater1' => $herdbruecke[0],
         'diff1' => $herdbruecke[1],
+        'abs1' => $herdbruecke[2],
         'highwater2' => $eisenbahnbruecke[0],
-        'diff2' => $eisenbahnbruecke[1]
+        'diff2' => $eisenbahnbruecke[1],
+        'abs2' => $eisenbahnbruecke[2]
     ]);
 });
 
