@@ -145,7 +145,7 @@ class DB {
         return [];
     }
 
-    public function getCurrentValue($id): ?array {
+    public function getCurrentValue($id): array {
         $db = $this->client->selectDB('telegraf');
         $sensorName = $this->sensors[$id];
 
