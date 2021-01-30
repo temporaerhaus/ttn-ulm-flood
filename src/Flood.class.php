@@ -20,10 +20,16 @@ class Flood {
         $lastTwoHours = DB::create()->getMeanForLastInterval($id);
         $twoHoursBeforeLastTwoHours = DB::create()->getMeanForSecondLastInterval($id);
 
+        // not pretty...
+        $defaults = [
+            1 => 3242.0,
+            2 => 2740.0
+        ];
+
         // debugging
         //$lastTwoHours += 10;
         $diff = abs($twoHoursBeforeLastTwoHours - $lastTwoHours);
-        $abs = (3242.0 - $currentPoint['payload_fields_distance']) / 10; // convert to cm
+        $abs = ($defaults[$id] - $currentPoint['payload_fields_distance']) / 10; // convert to cm
         return [$diff > 1.0 || $abs > 3.0, $diff, $abs];
     }
 
