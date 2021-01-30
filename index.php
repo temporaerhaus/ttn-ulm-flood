@@ -32,6 +32,10 @@ $router->map('GET', '/apidoc', function() use ($twig) {
     echo $twig->render('apidoc.html');
 });
 
+$router->map('GET', '/impressum', function() use ($twig) {
+    echo $twig->render('impressum.html');
+});
+
 
 // Route matching
 $match = $router->match();

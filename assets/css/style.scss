@@ -70,6 +70,24 @@ pre {
   padding: 12px;
 }
 
+p {
+  color: #fff;
+}
+
+.minor-content {
+  margin-top: 3rem;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+
+  .impressum {
+    margin-top: 2rem;
+  }
+}
+
+
 .logo {
   display: block;
   width: 72px;
