@@ -97,6 +97,7 @@ a {
 pre {
   background-color: #444;
   padding: 12px;
+  margin: 5px 0;
 }
 
 p {
@@ -133,6 +134,13 @@ p {
 
   .headline {
     margin: 1rem;
+    p {
+      font-weight: 400;
+      font-size: 1.25rem;
+      color: #fff;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
   }
 
   .content {
@@ -190,13 +198,19 @@ p {
 
     justify-content: flex-start;
     align-items: flex-start;
-    margin-top: 3rem;
 
-    h2 {
-      margin-top: 2rem;
+    h1 {
+      text-align: center;
+      margin: 1rem auto;
     }
-    h3 {
+
+    section h2 {
+      margin-top: 2rem;
+      text-align: left;
+    }
+    section h3 {
       margin-top: 1rem;
+      text-align: left;
     }
 
   }
