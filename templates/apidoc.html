@@ -1,39 +1,40 @@
-{{ include('header.html') }}
+{{ include('header.html', {'title': 'Hochwasser Ulm API-Dokumentation', 'description': 'API-Dokumentation der TTN-Hochwassersensoren in Ulm.' }) }}
 
-<div class="headline">
-    <h1>API Dokumentation</h1>
-</div>
 
-<div class="content-docs">
+<article class="content-docs">
+    <h1>API-Dokumentation</h1>
     <p>
         Die Daten der Hochwassersensoren lassen sich über eine einfache API via HTTP GET Requests abfragen.
     </p>
+    <section>
+        <h2>Sensorliste</h2>
+        <p>
+            Jeder Sensor hat eine eindeutige, immer gleich bleibende Nummerierung. Diese Nummer wird nachfolgend
+            als Parameter in den Anfragen verwendet.
+        </p>
+        <pre>
+            1: Sensor Herdbrücke (48.396026, 9.995994)
+            2: Sensor Eisenbahnbrücke Blau (48.403812, 9.949625)
+        </pre>
+    </section>
 
-    <h2>Sensorliste</h2>
-    <p>
-        Jeder Sensor hat eine eindeutige, immer gleich bleibende Nummerierung. Diese Nummer wird nachfolgend
-        als Parameter in den Anfragen verwendet.
-    </p>
-    <pre>
-        1: Sensor Herdbrücke (48.396026, 9.995994)
-        2: Sensor Eisenbahnbrücke Blau (48.403812, 9.949625)
-    </pre>
+    <section>
+        <h2>Status</h2>
+        <p>Ruft den aktuellen Hochwasserstand ab, mit Angabe der aktuellen Höhe des Wassers in mm auf dem Strassenbelag.</p>
+        <h3>Request</h3>
+        <pre>
+            https://api.hochwasser.ttnulm.de/state/[id]
+        </pre>
+        <h3>Response</h3>
+        <pre>
+            {
+            "diff": 0,
+            "flood": false
+            }
+        </pre>
+    </section>
 
-    <h2>Status</h2>
-    <p>Ruft den aktuellen Hochwasserstand ab, mit Angabe der aktuellen Höhe des Wassers in mm auf dem Strassenbelag.</p>
-    <h3>Request</h3>
-    <pre>
-        https://api.hochwasser.ttnulm.de/state/[id]
-    </pre>
-    <h3>Response</h3>
-    <pre>
-        {
-        "diff": 0,
-        "flood": false
-        }
-    </pre>
-
-
+    <section>
     <h2>Abstände</h2>
     <p>
         Ruft die Abstandswerte in Millimeter im genannten Interval ab.
@@ -69,6 +70,6 @@
 ]
     </code>
     </pre>
-</div>
-
+    </section>
+</article>
 {{ include('footer.html') }}

@@ -1,14 +1,13 @@
-{{ include('header.html') }}
-
-<div class="headline">
+{{ include('header.html', {'title': 'Hochwasser Ulm: Donau und Blau', 'description': 'Live-Daten, ob Hochwasser den Geh- und Radweg in Ulm an Donau und Blau überschwemmt hat. Ein TTN Ulm-Projekt.' }) }}
+<header class="headline">
     <h1>Hochwasser Ulm</h1>
-    <img class="logo" src="assets/img/ttnulm.svg">
-    <h3>Ein TTN Ulm Projekt</h3>
-</div>
+    <img class="logo" alt="Logo der LoRa- / TTN-Gruppe Ulm" src="assets/img/ttnulm.svg">
+    <p role="doc-subtitle">Ein TTN Ulm Projekt</p>
+</header>
 
-<div class="content">
+<main class="content">
 
-    <div class="item {% if highwater1 %} alert{% else %} ok{% endif %}">
+    <section class="item {% if highwater1 %} alert{% else %} ok{% endif %}">
         <h2>Herdbrücke</h2>
         
         <div class="status">
@@ -23,9 +22,9 @@
             <p>{{ (abs1)|round(1, 'floor') }} cm Hochwasser</p>
             <p>{{ (diff1)|round(1,'floor') }} cm Unterschied in den letzten 2 Stunden.</p>
         </div>
-    </div>
+    </section>
 
-    <div class="item {% if highwater2 %} alert{% else %} ok{% endif %}">
+    <section class="item {% if highwater2 %} alert{% else %} ok{% endif %}">
         <h2>Eisenbahnbrücke Blau</h2>
 
         <div class="status">
@@ -40,12 +39,12 @@
             <p>{{ (abs2)|round(1, 'floor') }} cm Hochwasser</p>
             <p>{{ (diff2)|round(1,'floor') }} cm Unterschied in den letzten 2 Stunden.</p>
         </div>
-    </div>
+    </section>
 
-</div>
+</main>
 
-<div class="note">
-    <p>Schwankungen von +- 0.5cm bei Trockenheit<br>sind vermutlich brückentechnisch bedingt<br>(Vibration, Ausdehnung, ...).</p>
+<div role="note" class="note">
+    <p>Schwankungen von +- 0.5 cm bei Trockenheit<br>sind vermutlich brückentechnisch bedingt<br>(Vibration, Ausdehnung, ...).</p>
 </div>
 
 
