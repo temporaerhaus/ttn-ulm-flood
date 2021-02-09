@@ -23,7 +23,7 @@ class Flood {
         // not pretty...
         $defaults = [
             1 => 3242.0,
-            2 => 2718.0
+            2 => 2768.0
         ];
 
         // debugging
@@ -31,7 +31,7 @@ class Flood {
         $diff = abs($twoHoursBeforeLastTwoHours - $lastTwoHours);
         $abs = ($defaults[$id] - $currentPoint['payload_fields_distance']) / 10; // convert to cm
         if ($abs < 0) $abs = 0; // prevent negative values because of jitter
-        return [$diff > 1.0 || $abs > 3.0, $diff, $abs];
+        return [$diff > 1.5 || $abs > 3.0, $diff, $abs];
     }
 
 }
