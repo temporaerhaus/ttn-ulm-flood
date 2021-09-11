@@ -37,10 +37,10 @@ class DB {
         $sensorName = $this->sensors[$id];
 
         $result = $db->query(
-            "SELECT payload_fields_distance 
-                   FROM telegraf.autogen.mqtt_consumer 
+            "SELECT uplink_message_decoded_payload_distance 
+                   FROM \"lorapark-hochwasser\"
                    WHERE time > (now() - ".$duration.")
-                   AND topic='ttn_ulm-radweghochwasser/devices/".$sensorName."/up'"
+                   AND topic='v3/ttn-ulm-radweghochwasser@ttn/devices/".$sensorName."/up'"
         );
 
         return $result->getPoints();
@@ -87,13 +87,11 @@ class DB {
         $db = $this->client->selectDB('telegraf');
         $sensorName = $this->sensors[$id];
 
-        $result = $db->query(
-            "SELECT round((payload_fields_distance/10)*2) / 2 AS distance                   
-                   FROM telegraf.autogen.mqtt_consumer 
+        $result = $db->query("SELECT round((uplink_message_decoded_payload_distance/10)*2) / 2 AS distance                   
+                   FROM \"lorapark-hochwasser\" 
                    WHERE ".$intervalStr."
-                   AND topic='ttn_ulm-radweghochwasser/devices/".$sensorName."/up'
-                   AND payload_fields_distance < 4000.0"
-        );
+                   AND topic='v3/ttn-ulm-radweghochwasser@ttn/devices/".$sensorName."/up'
+                   AND uplink_message_decoded_payload_distance < 4000.0");
 
         return $this->calculateMedian(
             array_map(function($a){
@@ -130,10 +128,10 @@ class DB {
 
         $intervalStr = " time >= '" . $from . "' AND time <= '" .$to . "' ";
 
-        $query = "SELECT payload_fields_distance                    
-                   FROM telegraf.autogen.mqtt_consumer 
+        $query = "SELECT uplink_message_decoded_payload_distance                    
+                   FROM \"lorapark-hochwasser\"
                    WHERE ".$intervalStr."
-                   AND topic='ttn_ulm-radweghochwasser/devices/".$sensorName."/up'";
+                   AND topic='v3/ttn-ulm-radweghochwasser@ttn/devices/".$sensorName."/up'";
 
         $result = $db->query($query);
         return $result->getPoints();
@@ -150,9 +148,9 @@ class DB {
         $sensorName = $this->sensors[$id];
 
         $result = $db->query(
-            "SELECT payload_fields_distance 
-                   FROM telegraf.autogen.mqtt_consumer 
-                   WHERE topic='ttn_ulm-radweghochwasser/devices/".$sensorName."/up' 
+            "SELECT uplink_message_decoded_payload_distance
+                   FROM \"lorapark-hochwasser\" 
+                   WHERE topic='v3/ttn-ulm-radweghochwasser@ttn/devices/".$sensorName."/up' 
                    ORDER BY time DESC LIMIT 1"
         );
 
@@ -160,6 +158,6 @@ class DB {
         if (!empty($points)) {
             return $points[0];
         }
-        return null;
+        return [];
     }
 }

@@ -26,10 +26,16 @@ class Flood {
             2 => 2768.0
         ];
 
+        // if no data is received, show "normal" result as default
+        // TODO: Show warning?
+        if (empty($currentPoint)) {
+            return$defaults[$id];
+        }
+
         // debugging
         //$lastTwoHours += 10;
         $diff = abs($twoHoursBeforeLastTwoHours - $lastTwoHours);
-        $abs = ($defaults[$id] - $currentPoint['payload_fields_distance']) / 10; // convert to cm
+        $abs = ($defaults[$id] - $currentPoint['uplink_message_decoded_payload_distance']) / 10; // convert to cm
         if ($abs < 0) $abs = 0; // prevent negative values because of jitter
         return [$diff > 1.5 || $abs > 3.0, $diff, $abs];
     }
