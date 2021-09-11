@@ -29,7 +29,7 @@ class Flood {
         // if no data is received, show "normal" result as default
         // TODO: Show warning?
         if (empty($currentPoint)) {
-            return$defaults[$id];
+            return [false, 0, 0];
         }
 
         // debugging
