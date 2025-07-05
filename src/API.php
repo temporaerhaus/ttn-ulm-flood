@@ -17,10 +17,10 @@ class API {
         $clean = array_map(function($a){
 
             //Example: 2019-06-19T22:04:57.579645412Z
-            $date = \DateTime::createFromFormat('Y-m-d\TH:i:s+', $a['time']);
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:s+', $a->values['_time']);
             return [
                 'time' => $date->format('Y-m-d H:i:s'),
-                'distance' => $a['payload_fields_distance']
+                'distance' => $a->values['distance'],
             ];
         }, $data);
         echo json_encode($clean);

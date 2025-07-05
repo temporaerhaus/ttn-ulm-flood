@@ -1,13 +1,19 @@
 {
     "require": {
-        "influxdb/influxdb-php": "^1.14",
         "altorouter/altorouter": "^1.2",
-        "twig/twig": "^2.0",
-        "ext-json": "*"
+        "twig/twig": "3.19.0.0",
+        "ext-json": "*",
+        "influxdata/influxdb-client-php": "^3.7",
+        "guzzlehttp/guzzle": "^7.9"
     },
     "autoload": {
         "psr-4": {
             "TTNUlm\\": "src/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
         }
     }
 }

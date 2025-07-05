@@ -3,8 +3,9 @@
 $config = [
     'influx_host' => 'localhost',
     'influx_port' => 8086,
-    'influx_username' => '',
-    'influx_password' => '',
+    'influx_token' => '',
+    'influx_bucket' => '',
+    'influx_org' => '',
 ];
 
 // hard coded sensor list. for the moment much easier

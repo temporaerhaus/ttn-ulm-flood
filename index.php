@@ -1,6 +1,7 @@
 <?php
-use TTNUlm\Flood;
 require 'vendor/autoload.php';
+
+use TTNUlm\Flood;
 
 $loader = new \Twig\Loader\FilesystemLoader('templates');
 $twig = new \Twig\Environment($loader, [

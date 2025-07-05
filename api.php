@@ -1,7 +1,7 @@
 <?php
 require 'vendor/autoload.php';
+
 use TTNUlm\API;
-use TTNUlm\Flood;
 
 $router = new AltoRouter();
 $api = new API();
